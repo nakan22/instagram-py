@@ -12,6 +12,18 @@ def home():
 def signup():
     return render_template('signup.html')
 
+@app.route("/puppies", methods=["POST"])
+def create():
+    email = request.form.get('name')
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    new_user = User(email, username, password)
+    
+    db.session.add(new_user)
+    db.session.commit()
+
+    return render_template('thankyou.html') 
 
 
 
