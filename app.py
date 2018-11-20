@@ -1,9 +1,9 @@
 from flask import render_template, request, flash, redirect, url_for
-from database import db, app, login_manager
+from database import db, app #, login_manger
 from models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegistrationForm, LoginForm
-from flask_login import UserMixin
+# from flask_login import UserMixin
 # app.config['SECRET_KEY'] = 'cc883108399d3ddb3186679bbd56c136'
 
 app.config.update(dict(
@@ -11,9 +11,9 @@ app.config.update(dict(
     
 ))
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 
 @app.route('/')
 def home():
@@ -56,6 +56,5 @@ def login():
 #     return str(result)
 
 #     return hashed_value
-
 if __name__ == '__main__':
     app.run()

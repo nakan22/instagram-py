@@ -24,16 +24,26 @@
 body {
     background-color: #FAFBFC;
 }
+
+#signupform {
+    margin-top: 80px;
+}
+
+
 </style>
 
 </head>
 
 <body>
-<div>
+<div class="col-sm-6">
+    <img src="/static/signup.png" id="image">
+</div>
+<div class="col-sm-6" id="signupform">
+        <img src="/static/wordmark.svg" id="wordmark">
+        <h4>Sign up to see photos and videos from your friends.</h4>
 <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Join Today</legend>
         <div class="form-group">
             {{ form.username.label(class="form-control-label") }}
 
@@ -88,7 +98,7 @@ body {
             {% endif %}
         </div>
     </fieldset>
-    <div class="form-group">
+    <div class="form-group" id="button">
         {{ form.submit(class="btn btn-outline-info") }}
     </div>
 </form>
