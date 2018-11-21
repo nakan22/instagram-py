@@ -37,7 +37,8 @@ def signup():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and check_password_hash(user.password, form.password.data):
             flash('you have been logged in!')
             return redirect(url_for('home'))
         else:
@@ -47,14 +48,6 @@ def login():
 
 
 
-# @app.route('/<password>')
-# def index(password):
-#     hashed_value = generate_password_hash(password)
 
-#     result = check_password_hash(stored_password, password)
-
-#     return str(result)
-
-#     return hashed_value
 if __name__ == '__main__':
     app.run()
