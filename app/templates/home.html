@@ -17,10 +17,10 @@
         <h1>HOME</h1>
         <div class="navbar-nav">
             {% if current_user.is_authenticated %}
-              <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+              <a class="nav-item nav-link" href="{{ url_for('sessions.logout') }}">Logout</a>
             {% else %}
-              <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
-              <a class="nav-item nav-link" href="{{ url_for('signup') }}">Register</a>
+              <a class="nav-item nav-link" href="{{ url_for('sessions.login') }}">Login</a>
+              <a class="nav-item nav-link" href="{{ url_for('users.signup') }}">Register</a>
             {% endif %}
           </div>
     </header>

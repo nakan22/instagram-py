@@ -1,4 +1,4 @@
-from database import db
+from app import db
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
@@ -6,6 +6,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(1024), unique=False)
+    image_file = db.Column(db.String(50), nullable=False, default= 'default.jpg')
     
 
     def __init__(self, username, email, password):
