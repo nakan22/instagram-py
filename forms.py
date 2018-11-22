@@ -27,4 +27,14 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+class EditForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError('That email is taken')
+
 

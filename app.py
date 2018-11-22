@@ -2,7 +2,7 @@ from flask import render_template, request, flash, redirect, url_for
 from database import db, app, login_manager
 from models import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, EditForm
 from flask_login import login_required, login_user, logout_user, current_user
 # app.config['SECRET_KEY'] = 'cc883108399d3ddb3186679bbd56c136'
 
@@ -37,8 +37,8 @@ def signup():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('home'))
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
