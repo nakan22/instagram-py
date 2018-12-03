@@ -18,7 +18,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 oauth.init_app(app)
-app.config.from_object(os.environ['APP_SETTINGS'])
 
 assets = Environment(app)
 assets.register('main_js', js)
