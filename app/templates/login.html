@@ -38,6 +38,10 @@ body {
 <div class="col-sm-6" id="signupform">
     <img src="/static/wordmark.svg" id="wordmark">
 <div class="content-section">
+<form method="POST" action={{url_for("sessions.oauth_login")}}>
+    <button type="submit" name="oauth">Login with Google </button>
+</form>
+
 <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">

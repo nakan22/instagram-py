@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 
 <html lang="en">
 <head>
@@ -10,8 +10,10 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
-</head>
+</head> -->
+{% extends "_base.html" %}
 
+{% block content %}
 <body>
     <header>
         <h1>HOME {{current_user.image_file}}</h1>
@@ -35,8 +37,9 @@
                     {% endfor %}
                     {% endif %}
                 {% endwith %}
-                {% block content %}{% endblock %}
+
         </div>
 ]</h2>  
 </body>
 </html>
+{% endblock %}
